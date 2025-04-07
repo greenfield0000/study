@@ -1,1 +1,0 @@
-genereted quarkus skdman
