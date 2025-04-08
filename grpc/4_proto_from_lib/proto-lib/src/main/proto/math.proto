@@ -1,0 +1,20 @@
+syntax="proto3";
+
+option java_multiple_files = true;
+option java_package = "ru.greenfield.study.grpc.protolib";
+option java_outer_classname = "MathService";
+
+package protolib;
+
+service Math {
+    rpc add (AddRequest) returns (AddResponse);
+}
+
+message AddRequest {
+    int64 a = 1;
+    int64 b = 2;
+}
+
+message AddResponse {
+    int64 res = 1;
+}
