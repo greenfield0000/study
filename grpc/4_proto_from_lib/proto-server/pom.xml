@@ -11,24 +11,24 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>ru.greenfield.study.grpc</groupId>
     <artifactId>proto-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
+            <groupId>ru.greenfield.study</groupId>
+            <artifactId>proto-lib</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
+            <artifactId>quarkus-arc</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-grpc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ru.greenfield.study.grpc</groupId>
-            <artifactId>proto-lib</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -1,2 +1,5 @@
 grpc/4_proto_from_lib/proto-server/.classpath
 grpc/4_proto_from_lib/proto-server/.classpath
+grpc/4_proto_from_lib/proto-server/.settings
+grpc/4_proto_from_lib/proto-server/target
+grpc/4_proto_from_lib/proto-server/.project
