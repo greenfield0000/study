@@ -1,0 +1,9 @@
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/src/main/java/ru/greenfield/study/grpc/streamingservice/service/TimerService.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/MutinyTimerGrpc.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TickResponse.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TickResponseOrBuilder.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/Timer.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TimerBean.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TimerClient.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TimerGrpc.java
+/Users/romanivanov/repository/sandbox/study/grpc/5_streaming-service/target/generated-sources/grpc/streamin_service/TimerOuterClass.java

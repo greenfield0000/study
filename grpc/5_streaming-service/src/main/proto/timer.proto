@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+package streamin_service;
+
+service Timer {
+    rpc Tick (google.protobuf.Empty) returns (stream TickResponse);
+}
+
+message TickResponse {
+    string counter = 1;
+}
