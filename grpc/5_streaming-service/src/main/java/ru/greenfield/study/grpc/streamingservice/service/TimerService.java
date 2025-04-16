@@ -1,5 +1,5 @@
-package ru.greenfield.study.grpc.streamingservice;
+package ru.greenfield.study.grpc.streamingservice.service;
 
-public class TimerService extends MutinyTimerServiceGrpc.{
+public class TimerService {
     
 }
