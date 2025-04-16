@@ -1,1 +1,4 @@
 grpc/5_streaming-service/target
+grpc/5_streaming-service/target/classes/streamin_service
+grpc/5_streaming-service/.classpath
+grpc/5_streaming-service/.project
