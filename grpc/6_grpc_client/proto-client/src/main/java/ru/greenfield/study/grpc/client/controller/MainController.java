@@ -2,26 +2,25 @@ package ru.greenfield.study.grpc.client.controller;
 
 import java.util.Date;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 
-import com.google.protobuf.*;
-
-import io.quarkus.grpc.GrpcClient;
-import io.smallrye.mutiny.Uni;
-import ru.greenfield.strudy.grpc.genproto.calendar.CalendarService;
+import ru.greenfield.study.grpc.client.service.CommonCalendarService;
 
 @Path(value = "/")
 public class MainController {
 
-    @GrpcClient("calendar")
-    CalendarService calendar;
+    private final CommonCalendarService calendarService;
+
+    @Inject
+    public MainController(CommonCalendarService calendarService) {
+        this.calendarService = calendarService;
+    }
 
     @GET
     @Path(value = "/date")
     public Date getDate() {
-        Uni<Timestamp> currentDate = calendar.getCurrentDate(Empty.newBuilder().build());
-        System.out.println(currentDate.onItem().toString());
-        return new Date();
+        return calendarService.getCurrentDate();
     }
-    
+
 }
