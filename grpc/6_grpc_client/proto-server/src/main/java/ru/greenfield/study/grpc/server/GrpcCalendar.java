@@ -4,11 +4,13 @@ import java.util.Date;
 
 import com.google.protobuf.*;
 
-import io.quarkus.grpc.GrpcService;
+import io.quarkus.grpc.*;
 import io.smallrye.mutiny.Uni;
 import ru.greenfield.strudy.grpc.genproto.calendar.MutinyCalendarServiceGrpc;
+import ru.greenfield.study.grpc.interceptor.HeaderConsoleInterceptor;
 
 @GrpcService
+@RegisterInterceptor(HeaderConsoleInterceptor.class)
 public class GrpcCalendar extends MutinyCalendarServiceGrpc.CalendarServiceImplBase {
 
     @Override
