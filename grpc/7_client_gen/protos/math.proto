@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+
+service Greeter {  
+    // Отправляет приветствие  
+    rpc SayHello (HelloRequest) returns (HelloReply) {}  
+}  
+// Сообщение запроса, содержащее имя пользователя.  
+message HelloRequest {  
+    string name = 1;  
+}  
+// Сообщение ответа с приветствием.  
+message HelloReply {  
+    string message = 1;  
+}  
+
+
