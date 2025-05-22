@@ -1,6 +1,5 @@
 syntax = "proto3";
 
-
 service Greeter {  
     // Отправляет приветствие  
     rpc SayHello (HelloRequest) returns (HelloReply) {}  

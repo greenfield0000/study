@@ -1,30 +1,49 @@
+PROTOC := protoc
 PROTO_DIR := protos
 OUT_DIR := generated
 
-# Путь к protoc-gen-* плагинам (если нужны вручную)
-PROTOC_GEN_GRPC_WEB := protoc-gen-grpc-web
+GRPC_JAVA_PLUGIN := $(shell which protoc-gen-grpc-java)
+PROTO_FILES := $(wildcard $(PROTO_DIR)/*.proto)
 
-all: java go dart ts
+# Подкаталоги для разных языков
+JAVA_OUT := $(OUT_DIR)/java
+GO_OUT := $(OUT_DIR)/go
+DART_OUT := $(OUT_DIR)/dart
+TS_OUT := $(OUT_DIR)/ts
+
+all: clean prepare java go dart ts
+
+prepare:
+	@mkdir -p $(JAVA_OUT) $(GO_OUT) $(DART_OUT) $(TS_OUT)
 
 java:
-	protoc -I=$(PROTO_DIR) $(PROTO_DIR)/*.proto \
-		--java_out=$(OUT_DIR)/java \
-		--grpc-java_out=$(OUT_DIR)/java
+	$(PROTOC) \
+		--plugin=protoc-gen-grpc-java=$(GRPC_JAVA_PLUGIN) \
+		--proto_path=$(PROTO_DIR) \
+		--java_out=$(JAVA_OUT) \
+		--grpc-java_out=$(JAVA_OUT) \
+		$(PROTO_FILES)
 
 go:
-	protoc -I=$(PROTO_DIR) $(PROTO_DIR)/*.proto \
-		--go_out=$(OUT_DIR)/go \
-		--go-grpc_out=$(OUT_DIR)/go
+	$(PROTOC) \
+		--proto_path=$(PROTO_DIR) \
+		--go_out=$(GO_OUT) \
+		--go-grpc_out=$(GO_OUT) \
+		$(PROTO_FILES)
 
 dart:
-	protoc -I=$(PROTO_DIR) $(PROTO_DIR)/*.proto \
-		--dart_out=grpc:$(OUT_DIR)/dart
+	$(PROTOC) \
+		--proto_path=$(PROTO_DIR) \
+		--dart_out=grpc:$(DART_OUT) \
+		$(PROTO_FILES)
 
 ts:
-	protoc -I=$(PROTO_DIR) $(PROTO_DIR)/*.proto \
-		--js_out=import_style=commonjs:$(OUT_DIR)/ts \
-		--grpc-web_out=import_style=typescript,mode=grpcwebtext:$(OUT_DIR)/ts
+	$(PROTOC) \
+		--proto_path=$(PROTO_DIR) \
+		--js_out=import_style=commonjs:$(TS_OUT) \
+		--grpc-web_out=import_style=typescript,mode=grpcwebtext:$(TS_OUT) \
+		$(PROTO_FILES)
 
 clean:
-	rm -rf $(OUT_DIR)
+	@rm -rf $(OUT_DIR)
 
