@@ -1,5 +1,19 @@
 syntax = "proto3";
 
+
+// ==== Java options ====
+option java_package = "com.example.greeter";
+option java_outer_classname = "GreeterProto";
+option java_multiple_files = true;
+
+// ==== Go options ====
+option go_package = "go/greeter";
+
+// ==== Dart options (специальных настроек нет) ====
+
+// ==== TypeScript options (для grpc-web) ====
+option optimize_for = SPEED; // Оптимизация для grpc-web (binary encoding)
+
 service Greeter {  
     // Отправляет приветствие  
     rpc SayHello (HelloRequest) returns (HelloReply) {}  

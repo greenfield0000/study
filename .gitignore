@@ -1,2 +1,3 @@
 
 grpc/7_client_gen/generated/java
+grpc/7_client_gen/generated/go/greeter

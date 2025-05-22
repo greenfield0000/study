@@ -3,6 +3,7 @@ PROTO_DIR := protos
 OUT_DIR := generated
 
 GRPC_JAVA_PLUGIN := $(shell which protoc-gen-grpc-java)
+GRPC_GOLANG_PLUGIN := $(shell which protoc-gen-grpc-go)
 PROTO_FILES := $(wildcard $(PROTO_DIR)/*.proto)
 
 # Подкаталоги для разных языков
@@ -17,6 +18,7 @@ prepare:
 	@mkdir -p $(JAVA_OUT) $(GO_OUT) $(DART_OUT) $(TS_OUT)
 
 java:
+	@echo "Generating JAVA gRPC code..."
 	$(PROTOC) \
 		--plugin=protoc-gen-grpc-java=$(GRPC_JAVA_PLUGIN) \
 		--proto_path=$(PROTO_DIR) \
@@ -25,10 +27,11 @@ java:
 		$(PROTO_FILES)
 
 go:
+	@echo "Generating Golang gRPC code..."
 	$(PROTOC) \
 		--proto_path=$(PROTO_DIR) \
-		--go_out=$(GO_OUT) \
-		--go-grpc_out=$(GO_OUT) \
+		--go_out=$(OUT_DIR) \
+		--go-grpc_out=$(OUT_DIR) \
 		$(PROTO_FILES)
 
 dart:
