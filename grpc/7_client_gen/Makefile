@@ -18,7 +18,8 @@ prepare:
 	@mkdir -p $(JAVA_OUT) $(GO_OUT) $(DART_OUT) $(TS_OUT)
 
 java:
-	@echo "Generating JAVA gRPC code..."
+	@echo " "
+	@echo "Generating Java gRPC code..."
 	$(PROTOC) \
 		--plugin=protoc-gen-grpc-java=$(GRPC_JAVA_PLUGIN) \
 		--proto_path=$(PROTO_DIR) \
@@ -27,6 +28,7 @@ java:
 		$(PROTO_FILES)
 
 go:
+	@echo " "
 	@echo "Generating Golang gRPC code..."
 	$(PROTOC) \
 		--proto_path=$(PROTO_DIR) \
@@ -35,12 +37,16 @@ go:
 		$(PROTO_FILES)
 
 dart:
+	@echo " "
+	@echo "Generating Dart gRPC code..."
 	$(PROTOC) \
 		--proto_path=$(PROTO_DIR) \
 		--dart_out=grpc:$(DART_OUT) \
 		$(PROTO_FILES)
 
 ts:
+	@echo " "
+	@echo "Generating Typescript gRPC code..."
 	$(PROTOC) \
 		--proto_path=$(PROTO_DIR) \
 		--js_out=import_style=commonjs:$(TS_OUT) \
@@ -49,4 +55,3 @@ ts:
 
 clean:
 	@rm -rf $(OUT_DIR)
-

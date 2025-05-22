@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+// ==== Java options ====
+option java_package = "com.example.pinpong";
+option java_outer_classname = "PinpongProto";
+option java_multiple_files = true;
+
+// ==== Go options ====
+option go_package = "go/com/example/pinpong";
+
+// ==== Dart options (специальных настроек нет) ====
+
+// ==== TypeScript options (для grpc-web) ====
+option optimize_for = SPEED; // Оптимизация для grpc-web (binary encoding)
+
+import "google/protobuf/empty.proto";
+
+enum Type {
+  PING = 0;
+  PONG = 1;
+}
+
+message PingPongRequest {
+  Type type = 1;
+}
+
+service PingService {  
+    rpc Ping (PingPongRequest) returns (google.protobuf.Empty) {}  
+}  
+
+service PongService {  
+    rpc Pong (PingPongRequest) returns (google.protobuf.Empty) {}  
+}  

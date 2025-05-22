@@ -1,30 +1,29 @@
 syntax = "proto3";
 
-
 // ==== Java options ====
-option java_package = "com.example.greeter";
-option java_outer_classname = "GreeterProto";
+option java_package = "com.example.math";
+option java_outer_classname = "MathProto";
 option java_multiple_files = true;
 
 // ==== Go options ====
-option go_package = "go/greeter";
+option go_package = "go/com/example/math";
 
 // ==== Dart options (специальных настроек нет) ====
 
 // ==== TypeScript options (для grpc-web) ====
 option optimize_for = SPEED; // Оптимизация для grpc-web (binary encoding)
 
-service Greeter {  
+service MathService {  
     // Отправляет приветствие  
-    rpc SayHello (HelloRequest) returns (HelloReply) {}  
-}  
-// Сообщение запроса, содержащее имя пользователя.  
-message HelloRequest {  
-    string name = 1;  
-}  
-// Сообщение ответа с приветствием.  
-message HelloReply {  
-    string message = 1;  
+    rpc Add (AddRequest) returns (AddResponse) {}
 }  
 
-
+// Сообщение запроса
+message AddRequest {  
+    int64 a = 1;  
+    int64 b = 2;  
+}  
+// Сообщение ответа
+message AddResponse {  
+    int64 res = 1;  
+}  
